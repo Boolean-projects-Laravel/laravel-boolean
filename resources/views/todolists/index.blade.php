@@ -6,20 +6,20 @@
         <button type="button" class="btn btn-outline-primary mb-3"><a class="text-decoration-none text-dark" style="font-weight:700" href="{{ '/todolists/create' }}">Crea un nuovo promemoria</a></button>
 
         
-        @foreach ($arrTodos as $todo)
+        @foreach ($arrTodos as $key => $todo)
             <div class="card container-fluid flex-row align-items-center">
                 <div class="col-10">
                     <h2>{{ $todo->title }}</h2>
-                    <span>{{ $todo->expire_date }}</span>
+                    <span @style(['color: red' => $todo->expire_date < date('Y-m-d')])>{{ $todo->expire_date }}</span>
                 </div>
-                
+
                 <div class="btn-group col-2" role="group" aria-label="Basic outlined example">
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse">Espandi</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#collapseExample{{$key}}">Espandi</button>
                     <button type="button" class="btn btn-outline-primary">Modifica</button>
                 </div>
             </div>
-
-            <div class="collapse">
+            
+            <div class="collapse" id="collapseExample{{$key}}">
                 <h2></h2>
                 <div>
                     <span>{{ $todo->expire_date }}</span>
