@@ -6,7 +6,8 @@
 </div>
 <div class="p-5" style="margin-inline: 10rem">
     
-    <form method="POST" 
+    <form 
+    method="POST" 
     action="{{ route('todolists.update', ['todolist' => $todolist->id] )}}" class="m-5">
         @csrf
         @method('PUT')
@@ -18,7 +19,7 @@
 
         <div class="mb-3">
             <label for="expire_date" class="form-label" style="font-weight:700; font-size:20px">Data di scadenza</label>
-            <input type="text" class="form-control" id="expire_date" name="expire_date" value="{{old('expire_date', $todolist->expire_date)}}">
+            <input type="date" class="form-control" id="expire_date" name="expire_date" value="{{old('expire_date', $todolist->expire_date)}}">
         </div>
         
         <div class="mb-3">
@@ -35,4 +36,3 @@
     
 @endsection
 
-{{-- {{ route('todolists.update', ['comic' => $comic->id] )}} --}}

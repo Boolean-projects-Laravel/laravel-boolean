@@ -15,7 +15,7 @@
 
         <div class="mb-3">
             <label for="expire_date" class="form-label" style="font-weight:700; font-size:20px">Data di scadenza</label>
-            <input type="text" class="form-control" id="expire_date" name="expire_date" value="{{old('expire_date')}}">
+            <input type="date" class="form-control" id="expire_date" name="expire_date" value="{{old('expire_date')}}">
         </div>
         
         <div class="mb-3">

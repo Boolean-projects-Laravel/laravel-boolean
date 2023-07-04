@@ -105,7 +105,7 @@ class TodolistController extends Controller
 
         $todolist->update();
 
-        return redirect()->route('todolists.index', ['todolist' => $todolist->id]);
+        return to_route('todolists.index', ['todolist' => $todolist->id]);
     }
 
     /**
@@ -116,8 +116,8 @@ class TodolistController extends Controller
      */
     public function destroy(Todolist $todolist)
     {
-        $todolist->delete();
+        // $todolist->delete();
 
-        return to_route('todolists.index')->with('delete_success', $todolist);
+        // return to_route('todolists.index')->with('delete_success', $todolist);
     }
 }

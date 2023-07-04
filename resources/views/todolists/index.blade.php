@@ -10,6 +10,7 @@
         <button type="button" class="btn btn-outline-primary mb-3"><a class="text-decoration-none text-dark" style="font-weight:700" href="{{ '/todolists/create' }}">Crea un nuovo promemoria</a></button>
 
         
+               
         @foreach ($arrTodos as $key => $todo)
             <div class="card container-fluid mb-2">
                 <div class=" d-flex flex-row align-items-center">
