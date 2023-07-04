@@ -7,9 +7,9 @@
             <span>data fine</span>
             <div>bottoni</div>
         </div>
-        <div> {{-- include --}}
+        <div class="collapse">
             <h2></h2>
-            <div @style(['color: red' => $todo['expire_date'] >= date('Y-m-d')])>
+            <div>
                 data 
                 bottoni
             </div>
@@ -20,3 +20,5 @@
         </div>
     </div>
 @endsection
+
+{{-- @style(['color: red' => $todo['expire_date'] >= date('Y-m-d')]) --}}

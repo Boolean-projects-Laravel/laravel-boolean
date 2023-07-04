@@ -17,7 +17,7 @@ class TodolistController extends Controller
     {
         $comics = Todolist::paginate(5);
 
-        return view('todolists.index', compact('todolists'));
+        return view('todolists.index');
     }
 
     /**
