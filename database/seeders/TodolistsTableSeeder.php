@@ -17,21 +17,24 @@ class TodolistsTableSeeder extends Seeder
     public function run(Faker $faker)
     {
         for ($i = 0; $i <= 20; $i++) {
-            $var = $faker->numberBetween(0, 1);
-            $image = 'https://picsum.photos/200/300';
+            $var = $faker->boolean();
+            $image = null;
 
             if($var==0) { 
-                $image;
+                $image ='https://picsum.photos/200/300';
             };
 
+            $var = $faker->boolean();
+            $desc = null;
             if($var==0) { 
-                // "image"->"https://picsum.photos/200/300"
+                $desc = $faker->sentence('10');
             };
             Todolist::create([
-
                 'done' => $faker->boolean(),
                 'expire_date' => $faker->date(),
                 'title' => $faker->sentence('2'),
+                'image' => $image,
+                'details' => $desc,
             ]);
 
 
