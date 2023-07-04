@@ -15,9 +15,9 @@ class TodolistController extends Controller
      */
     public function index()
     {
-        $comics = Todolist::paginate(5);
+        $arrTodos = Todolist::all();
 
-        return view('todolists.index');
+        return view('todolists.index', compact('arrTodos'));
     }
 
     /**
