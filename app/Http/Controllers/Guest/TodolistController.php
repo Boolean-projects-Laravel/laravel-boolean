@@ -15,7 +15,9 @@ class TodolistController extends Controller
      */
     public function index()
     {
-        //
+        $comics = Todolist::paginate(5);
+
+        return view('todolists.index', compact('todolists'));
     }
 
     /**
@@ -25,7 +27,7 @@ class TodolistController extends Controller
      */
     public function create()
     {
-        //
+        return view('todolists.create');
     }
 
     /**
@@ -47,7 +49,7 @@ class TodolistController extends Controller
      */
     public function show(Todolist $todolist)
     {
-        //
+        return view('todolists.show', compact('todolists'));
     }
 
     /**
