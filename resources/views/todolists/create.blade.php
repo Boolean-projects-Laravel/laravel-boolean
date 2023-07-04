@@ -2,7 +2,10 @@
 
 @section('contents')
     <h1 class="mx-5">inserisci un nuovo Promemoria</h1>
-    <form method="POST" action="{{ route('todolists.store') }}" class="m-5">
+    <form 
+    method="POST" 
+    action="{{ route('todolists.store') }}" class="m-5"
+    >
         @csrf
 
         <div class="mb-3">
