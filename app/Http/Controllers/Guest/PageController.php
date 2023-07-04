@@ -10,7 +10,7 @@ class PageController extends Controller
 {
     public function index()
     {
-        $arrTodos = Todolist::all();
+        $arrTodos = Todolist::paginate(5);
         return view('todolists.index', compact('arrTodos'));
     }
 }

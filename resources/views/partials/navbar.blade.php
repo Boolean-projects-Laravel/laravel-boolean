@@ -8,7 +8,7 @@
                    <li><li class="ps-4">
                     <a class="text-decoration-none text-dark" style="font-weight:700" href="/todolists">Todolists </a> 
                 </li></li>
-                   <li></li>
+                <li></li>
                 </ul>
                 
             </div>  

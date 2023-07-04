@@ -1,9 +1,14 @@
 @extends('layouts.base')
 
 @section('contents')
-    <h1 class="mx-5">inserisci un nuovo Promemoria</h1>
-    <form method="POST" action="{{ route('todolists.store') }}" class="m-5">
+<div class="bg-dark text-light py-2 mb-3">
+    <h1 class="ms-4" style="font-weight: 700">Modifica Comic</h1>
+</div>
+<div class="p-5" style="margin-inline: 10rem">
+    
+    <form method="POST" action="{{ route('comics.update', ['comic' => $comic->id] )}}" class="m-5">
         @csrf
+        @method('PUT')
 
         <div class="mb-3">
             <label for="title" class="form-label" style="font-weight:700; font-size:20px">Titolo</label>
@@ -23,6 +28,10 @@
             <label for="details" class="form-label" style="font-weight:700; font-size:20px">Dettagli</label>
             <input type="text" class="form-control" id="details" name="details" value="{{old('details')}}">
         </div>
-        <button class="btn btn-primary" style="font-size: 20px">Salva</button>
+        <button class="btn btn-primary" style="font-size: 20px">Aggiorna</button>
     </form>
+</div>
+    
 @endsection
+
+{{-- {{ route('todolists.update', ['comic' => $comic->id] )}} --}}

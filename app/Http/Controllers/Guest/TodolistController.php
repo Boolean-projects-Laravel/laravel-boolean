@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class TodolistController extends Controller
 {
+
+    private $validations = [
+        'expire_date' => 'required|date|max:20',
+        'title' => 'required|string|max:100',
+        'details' => 'required|string|',
+        'image' => 'required|string|max:1000',
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +45,22 @@ class TodolistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validations);
+
+        $data = $request->all();
+
+        // salvare i dati nel database
+
+        $newTodolist = new Todolist();
+
+        $newTodolist->expire_date = $data['expire_date'];
+        $newTodolist->title = $data['title'];
+        $newTodolist->details = $data['details'];
+        $newTodolist->details = $data['image'];
+
+        $newTodolist->save();
+
+        return redirect()->route('todolists.index', ['todolist' => $newTodolist->id]);
     }
 
     /**
@@ -49,7 +71,7 @@ class TodolistController extends Controller
      */
     public function show(Todolist $todolist)
     {
-        return view('todolists.show', compact('todolists'));
+        //
     }
 
     /**
@@ -60,7 +82,7 @@ class TodolistController extends Controller
      */
     public function edit(Todolist $todolist)
     {
-        //
+        return view('todolists.edit', compact('todolist'));
     }
 
     /**
@@ -72,7 +94,18 @@ class TodolistController extends Controller
      */
     public function update(Request $request, Todolist $todolist)
     {
-        //
+        $request->validate($this->validations);
+
+        $data = $request->all();
+
+        $todolist->expire_date = $data['expire_date'];
+        $todolist->title = $data['title'];
+        $todolist->details = $data['details'];
+        $todolist->details = $data['image'];
+
+        $todolist->update();
+
+        return redirect()->route('todolists.index', ['todolist' => $todolist->id]);
     }
 
     /**
@@ -83,6 +116,8 @@ class TodolistController extends Controller
      */
     public function destroy(Todolist $todolist)
     {
-        //
+        $todolist->delete();
+
+        return to_route('todolists.index')->with('delete_success', $todolist);
     }
 }
