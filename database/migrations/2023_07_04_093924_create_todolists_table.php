@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('todolists', function (Blueprint $table) {
             $table->id();
+            
+
+            $table->boolean('done')->default(false);
+            $table->date('expire_date');
+            $table->string('title', 50);
+            $table->text('details')->nullable();
+            $table->string('image', 500)->nullable();
+
             $table->timestamps();
         });
     }
