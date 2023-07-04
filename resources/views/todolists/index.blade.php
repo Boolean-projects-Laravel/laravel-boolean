@@ -7,30 +7,39 @@
 
         
         @foreach ($arrTodos as $key => $todo)
-            <div class="card container-fluid">
+            <div class="card container-fluid mb-2">
                 <div class=" d-flex flex-row align-items-center">
                     <div class="col-10">
                         <h2>{{ $todo->title }}</h2>
                         <span @style(['color: red' => $todo->expire_date < date('Y-m-d'), 'color: green; font-weight: bold' => $todo->expire_date >= date('Y-m-d')])>{{ $todo->expire_date }}</span>
                     </div>
                     <div class="btn-group col-2" role="group" aria-label="Basic outlined example">
-                        @if($todo->details != null or $todo->images != null)
-                            <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{$key}}">Espandi</button>
+                        @if($todo->details != null or $todo->image != null)
+                            <button class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#collapseExample{{$key}}">Espandi</button>
                     </div>
                 </div>
-                        <div class="collapse text-center pb-3" id="collapseExample{{$key}}">
+                        <div class="collapse text-center pb-3 flex-column" id="collapseExample{{$key}}">
                             @if ($todo->details != null)
                             <div>
                                 <span>{{ $todo->details }}</span>
                             </div>
-                            @elseif ($todo->image != null)
-                                <img src="" alt="image">
                             @endif
+                            @if ($todo->image != null)
+                            <div>
+                                <img src="{{ $todo->image }}" alt="image">
+                            </div>
+                            @endif
+                        <div class="btn-group mt-3">
                             <button type="button" class="btn btn-outline-primary">Modifica</button>
+                            <button type="button" class="btn btn-outline-danger">Elimina</button>
+                        </div>
                         </div>
                     </div> 
                         @else
-                        <button type="button" class="btn btn-outline-primary">Modifica</button>
+                        <div class="btn-group container-fluid p-0">
+                            <button type="button" class="btn btn-outline-primary">Modifica</button>
+                            <button type="button" class="btn btn-outline-danger">Elimina</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -39,5 +48,3 @@
         
     </div>
 @endsection
-
-{{-- @style(['color: red' => $todo['expire_date'] >= date('Y-m-d')]) --}}
