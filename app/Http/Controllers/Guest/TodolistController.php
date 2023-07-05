@@ -12,8 +12,9 @@ class TodolistController extends Controller
     private $validations = [
         'expire_date' => 'required|date|max:20',
         'title' => 'required|string|max:100',
-        'details' => 'nullable|string',
         'image' => 'nullable|string|max:1000',
+        'details' => 'nullable|string',
+
     ];
 
     /**
@@ -56,8 +57,9 @@ class TodolistController extends Controller
 
         $newTodolist->expire_date = $data['expire_date'];
         $newTodolist->title = $data['title'];
-        $newTodolist->details = $data['details'];
         $newTodolist->image = $data['image'];
+        $newTodolist->details = $data['details'];
+
 
         $newTodolist->save();
 
@@ -101,8 +103,9 @@ class TodolistController extends Controller
 
         $todolist->expire_date = $data['expire_date'];
         $todolist->title = $data['title'];
-        $todolist->details = $data['details'];
         $todolist->image = $data['image'];
+        $todolist->details = $data['details'];
+
 
         $todolist->update();
 
