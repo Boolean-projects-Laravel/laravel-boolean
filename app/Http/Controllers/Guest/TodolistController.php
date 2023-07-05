@@ -12,9 +12,10 @@ class TodolistController extends Controller
     private $validations = [
         'expire_date' => 'required|date|max:20',
         'title' => 'required|string|max:100',
-        'details' => 'required|string|',
-        'image' => 'required|string|max:1000',
+        'details' => 'nullable|string',
+        'image' => 'nullable|string|max:1000',
     ];
+
     /**
      * Display a listing of the resource.
      *
@@ -56,7 +57,7 @@ class TodolistController extends Controller
         $newTodolist->expire_date = $data['expire_date'];
         $newTodolist->title = $data['title'];
         $newTodolist->details = $data['details'];
-        $newTodolist->details = $data['image'];
+        $newTodolist->image = $data['image'];
 
         $newTodolist->save();
 
@@ -101,11 +102,11 @@ class TodolistController extends Controller
         $todolist->expire_date = $data['expire_date'];
         $todolist->title = $data['title'];
         $todolist->details = $data['details'];
-        $todolist->details = $data['image'];
+        $todolist->image = $data['image'];
 
         $todolist->update();
 
-        return to_route('todolists.index', ['todolist' => $todolist->id]);
+        return to_route('todolists.index');
     }
 
     /**
